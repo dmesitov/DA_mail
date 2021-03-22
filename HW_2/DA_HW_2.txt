@@ -1,5 +1,4 @@
-  
-with cte as (
+  with cte as (
     select pl.match_id,
            localized_name,
            case when pl.player_slot <= 4 then 'Radiant' else 'Dire' end as team,     --определение команды игрока
