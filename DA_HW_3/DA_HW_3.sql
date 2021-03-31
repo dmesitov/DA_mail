@@ -80,8 +80,7 @@ limit 10;
 
 select median(time_to_assign)         as tta_median,
        quantile(0.95)(time_to_assign) as tta_95_quantile
-from (select idhash_order,
-             (da_dttm - order_dttm) as time_to_assign
+from (select (da_dttm - order_dttm) as time_to_assign
       from data_analysis.orders
       where (da_dttm IS NOT NULL))
 where time_to_assign <= 1000;   --отбрасываем выбросы (отложенные заказы. 1000 секунд
