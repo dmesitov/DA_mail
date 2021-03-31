@@ -51,7 +51,7 @@ from (
 
 
 select A.h3                              as hex_id,
-       orders_from_hex + orders_from_hex as orders_total
+       orders_from_hex + orders_to_hex as orders_total
 from ( select geoToH3(longitude, latitude, 7)                                   as h3,
               countIf(toHour(o.order_dttm) >= 7 and toHour(o.order_dttm) <= 10) as orders_from_hex
        from data_analysis.views
